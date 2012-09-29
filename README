@@ -1,0 +1,27 @@
+// i3-bw
+// This software is licensed under the GPL.
+// Author: lee@yun.yagibdah.de, 2012-09-28
+//
+// This program outputs some system information to be displayed in the
+// status bar of the i3 window manager.  I wrote it because I wanted
+// the up- and downstream bandwidth usage displayed in the bar and the
+// i3-status program only displays the link speed.
+//
+// compile with something like:
+//   gcc -march=native -Wall -O2 i3-bw.c -o i3-bw
+//
+// First run the program from the commandline to check if you get any
+// errors:
+//
+// ./i3-bw 1 /sys/class/net/eth1/statistics/rx_bytes /sys/class/net/eth1/statistics/tx_bytes
+//
+// Replace "eth1" with the inferface you want the bandwidth usage displayed
+// for. It it works, make an entry in your i3 configuration like:
+//
+// bar {
+//   status_command path/to/i3-bw 5 /sys/class/net/eth1/statistics/rx_bytes /sys/class/net/eth1/statistics/tx_bytes
+// }
+//
+// That updates the info in the bar every 5 seconds, giving you the average
+// bandwidth usage over the last 5 seconds.
+//
